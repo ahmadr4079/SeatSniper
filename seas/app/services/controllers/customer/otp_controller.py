@@ -3,6 +3,12 @@ from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.response import Response
 
+from seas.app.helpers.exceptions.rest_exceptions.customer.otp_rest_exceptions import (
+    MaxOtpAttemptsReachedRestBadRequest,
+    NounceCodeExpiredRestBadRequest,
+    OtpCodeExpiredRestBadRequest,
+    OtpCodeNotExpireRestBadRequest,
+)
 from seas.app.logics.customer.customer_logic import CustomerLogic
 from seas.app.logics.customer.otp_logic import OtpLogic
 from seas.app.logics.customer.security_logic import SecurityLogic
@@ -21,6 +27,12 @@ class OtpController(BaseApiView):
     @extend_schema(
         request=OtpRequestSerializer,
         responses={400: OpenApiTypes.OBJECT, 200: OtpResponseSerializer},
+        examples=[
+            NounceCodeExpiredRestBadRequest().openapi_example,
+            OtpCodeExpiredRestBadRequest().openapi_example,
+            OtpCodeNotExpireRestBadRequest().openapi_example,
+            MaxOtpAttemptsReachedRestBadRequest().openapi_example,
+        ],
     )
     def post(self, request, *args, **kwargs):
         request_serializer = OtpRequestSerializer(data=request.data)

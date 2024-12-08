@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
 
+from seas.app.helpers.exceptions.rest_exceptions.customer.otp_rest_exceptions import OtpCodeNotExpireRestBadRequest
 from seas.app.logics.customer.otp_logic import OtpLogic
 from seas.app.services.controllers.base_api_view import BaseApiView
 from seas.app.services.serializers.customer.login_serializer import LoginRequestSerializer, LoginResponseSerializer
@@ -19,6 +20,9 @@ class LoginController(BaseApiView):
     @extend_schema(
         request=LoginRequestSerializer,
         responses={200: LoginResponseSerializer, 400: OpenApiTypes.OBJECT},
+        examples=[
+            OtpCodeNotExpireRestBadRequest().openapi_example,
+        ],
     )
     def post(self, request: Request):
         request_serializer = LoginRequestSerializer(data=request.data)
