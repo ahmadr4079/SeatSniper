@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17.2
+    container_name: db
+    restart: always
+    networks:
+      - seatsnipernet
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-seatsniper}
+    ports:
+      - "5432:5432"
+    volumes:
+      - local-services-db-data:/var/lib/postgresql/data
+
+volumes:
+  local-services-db-data:
+    external: true
+
+
+networks:
+  seatsnipernet:
+    external: true

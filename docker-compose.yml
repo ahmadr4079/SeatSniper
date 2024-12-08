@@ -1,0 +1,19 @@
+services:
+  core:
+    image: seatsniper-core:latest
+    restart: always
+    environment:
+      SECRET_KEY: ${SECRET_KEY:-seas-default-secret-key}
+      DEBUG: ${DEBUG:-False}
+      ALLOWED_HOST: ${ALLOWED_HOST:-["localhost", "0.0.0.0"]}
+      PG_DSN: ${PG_DSN:-postgres://postgres:postgres@db:5432/seatsniper}
+    networks:
+      - seatsnipernet
+    ports:
+      - "8000:8000"
+    command: gunicorn --workers=4 -b "0.0.0.0:8000" -t 120 seas.project.wsgi:application
+
+
+networks:
+  seatsnipernet:
+    external: true
