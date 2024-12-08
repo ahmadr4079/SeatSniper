@@ -8,3 +8,4 @@ drf-spectacular==0.28.0
 djangorestframework-simplejwt==5.3.1
 redis==5.2.1
 pytz==2022.7
+django-filter==24.3
