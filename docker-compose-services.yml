@@ -14,8 +14,22 @@ services:
     volumes:
       - local-services-db-data:/var/lib/postgresql/data
 
+  cache:
+    image: redis:alpine
+    container_name: cache
+    restart: always
+    networks:
+      - seatsnipernet
+    volumes:
+      - local-services-cache-data:/data
+    ports:
+      - "6379:6379"
+
+
 volumes:
   local-services-db-data:
+    external: true
+  local-services-cache-data:
     external: true
 
 

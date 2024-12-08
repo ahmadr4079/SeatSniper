@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from seas.app.models import CustomerEntity, SessionEntity
+
+admin.site.register(CustomerEntity)
+admin.site.register(SessionEntity)

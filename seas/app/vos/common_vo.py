@@ -1,0 +1,11 @@
+class CommonVo:
+    code = "code"
+    error = "error"
+    message = "message"
+    phone_number = "phone_number"
+    nounce_code = "nounce_code"
+    otp_code = "otp_code"
+    exp = "exp"
+    jti = "jti"
+    user_id = "user_id"
+    error_validation = "error_validation"
