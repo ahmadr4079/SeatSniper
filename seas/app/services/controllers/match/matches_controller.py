@@ -26,6 +26,7 @@ class MatchesController(BaseApiView, pagination.LimitOffsetPagination):
             OpenApiParameter(name="limit", type=OpenApiTypes.INT64),
             OpenApiParameter(name="offset", type=OpenApiTypes.INT64),
         ],
+        summary="get matches with filter in state",
     )
     def get(self, request: Request, *args, **kwargs):
         matches = self.match_logic.get_matches()

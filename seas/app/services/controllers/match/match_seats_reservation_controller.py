@@ -40,6 +40,7 @@ class MatchSeatsReservationController(BaseApiView, pagination.LimitOffsetPaginat
                 status_codes=["200"],
             ),
         ],
+        summary="reserve seat (start of deposit process)",
     )
     def post(self, request: Request, *args, **kwargs):
         request_serializer = MatchSeatsReservationRequestSerializer(data=request.data)

@@ -23,6 +23,7 @@ class LoginController(BaseApiView):
         examples=[
             OtpCodeNotExpireRestBadRequest().openapi_example,
         ],
+        summary="get nounce_code and send otp (start of login process)",
     )
     def post(self, request: Request):
         request_serializer = LoginRequestSerializer(data=request.data)

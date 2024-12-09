@@ -33,6 +33,7 @@ class OtpController(BaseApiView):
             OtpCodeNotExpireRestBadRequest().openapi_example,
             MaxOtpAttemptsReachedRestBadRequest().openapi_example,
         ],
+        summary="get access and refresh token",
     )
     def post(self, request, *args, **kwargs):
         request_serializer = OtpRequestSerializer(data=request.data)

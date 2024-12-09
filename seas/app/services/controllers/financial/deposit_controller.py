@@ -33,6 +33,7 @@ class DepositController(BaseApiView, pagination.LimitOffsetPagination):
         request=DepositRequestSerializer,
         responses={200: DepositResponseSerializer, 404: OpenApiTypes.OBJECT, 400: OpenApiTypes.OBJECT},
         examples=[MatchRestNotFound().openapi_example, MatchSeatNotAvailableRestBadRequest().openapi_example],
+        summary="deposit flow and get payment link to buy match seats",
     )
     def post(self, request: Request, *args, **kwargs):
         request_serializer = DepositRequestSerializer(data=request.data)

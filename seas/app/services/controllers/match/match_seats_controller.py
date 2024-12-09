@@ -22,6 +22,7 @@ class MatchSeatsController(BaseApiView, pagination.LimitOffsetPagination):
     @extend_schema(
         responses={200: MatchSeatsResponseSerializer, 404: OpenApiTypes.OBJECT},
         examples=[MatchRestNotFound().openapi_example],
+        summary="get match seats with state and price of seat",
     )
     def get(self, request: Request, *args, **kwargs):
         match_id = kwargs.get(CommonVo.match_id)
