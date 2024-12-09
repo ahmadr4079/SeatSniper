@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 from seas.project.config import seas_config
@@ -127,4 +128,10 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=seas_config.access_token_lifetime_minutes),
+    "REFRESH_TOKEN_LIFETIME": timedelta(minutes=seas_config.refresh_token_lifetime_minutes),
+    "ALGORITHM": "RS256",
 }

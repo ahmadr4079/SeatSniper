@@ -11,3 +11,4 @@ class CommonVo:
     error_validation = "error_validation"
     match_id = "match_id"
     seats = "seats"
+    seat_ids = "seat_ids"

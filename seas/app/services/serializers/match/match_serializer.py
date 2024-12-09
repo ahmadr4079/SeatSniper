@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from seas.app.enums.match.match_enums import CustomerMatchSeatStateType
 from seas.app.models import MatchEntity, SeatEntity
 
 
@@ -18,6 +19,9 @@ class MatchResponseSerializer(serializers.Serializer):
 
 class MatchSeatStadiumSerializer(serializers.ModelSerializer):
     price = serializers.IntegerField(allow_null=True)
+    state = serializers.ChoiceField(
+        choices=CustomerMatchSeatStateType.choices, default=CustomerMatchSeatStateType.AVAILABLE
+    )
 
     class Meta:
         model = SeatEntity
@@ -26,3 +30,7 @@ class MatchSeatStadiumSerializer(serializers.ModelSerializer):
 
 class MatchSeatsResponseSerializer(serializers.Serializer):
     seats = MatchSeatStadiumSerializer(many=True)
+
+
+class MatchSeatsReservationRequestSerializer(serializers.Serializer):
+    seat_ids = serializers.ListSerializer(child=serializers.UUIDField())

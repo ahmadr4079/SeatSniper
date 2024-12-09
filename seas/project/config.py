@@ -23,6 +23,8 @@ class SEASConfig(BaseSettings):
     nounce_code_ttl: int = Field(default=60 * 15)
     otp_attempt_time_limit_ttl: int = Field(default=60 * 2)
     otp_time_limit_max_attempt: int = Field(default=5)
+    access_token_lifetime_minutes: int = Field(default=60)
+    refresh_token_lifetime_minutes: int = Field(default=120)
 
     class Config:
         env_file = '.env'

@@ -6,3 +6,9 @@ class MatchStateType(models.TextChoices):
     CLOSED = "CLOSED"
     CANCELLED = "CANCELLED"
     COMPLETED = "COMPLETED"
+
+
+class CustomerMatchSeatStateType(models.TextChoices):
+    AVAILABLE = "AVAILABLE"
+    RESERVED = "RESERVED"
+    SOLD = "SOLD"

@@ -1,5 +1,7 @@
+import datetime
 from typing import List
 
+from django.utils.crypto import get_random_string
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import OpenApiParameter
 
@@ -32,3 +34,8 @@ class Utils:
                 )
             )
         return parameters
+
+    @staticmethod
+    def generate_tracking_code() -> str:
+        now_time_stamp = str(int(datetime.datetime.timestamp(datetime.datetime.now())))
+        return now_time_stamp + get_random_string(2, allowed_chars="0123456789")
