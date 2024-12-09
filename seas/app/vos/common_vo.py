@@ -9,3 +9,5 @@ class CommonVo:
     jti = "jti"
     user_id = "user_id"
     error_validation = "error_validation"
+    match_id = "match_id"
+    seats = "seats"

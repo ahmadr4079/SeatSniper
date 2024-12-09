@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from seas.app.models import MatchEntity
+from seas.app.models import MatchEntity, SeatEntity
 
 
 class MatchSerializerSerializer(serializers.ModelSerializer):
@@ -14,3 +14,15 @@ class MatchResponseSerializer(serializers.Serializer):
     next = serializers.CharField()
     previous = serializers.CharField()
     results = MatchSerializerSerializer(many=True)
+
+
+class MatchSeatStadiumSerializer(serializers.ModelSerializer):
+    price = serializers.IntegerField(allow_null=True)
+
+    class Meta:
+        model = SeatEntity
+        exclude = ["creation_time", "last_update_time", "is_deleted"]
+
+
+class MatchSeatsResponseSerializer(serializers.Serializer):
+    seats = MatchSeatStadiumSerializer(many=True)
