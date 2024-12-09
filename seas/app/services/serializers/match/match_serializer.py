@@ -19,9 +19,7 @@ class MatchResponseSerializer(serializers.Serializer):
 
 class MatchSeatStadiumSerializer(serializers.ModelSerializer):
     price = serializers.IntegerField(allow_null=True)
-    state = serializers.ChoiceField(
-        choices=CustomerMatchSeatStateType.choices, default=CustomerMatchSeatStateType.AVAILABLE
-    )
+    state = serializers.ChoiceField(choices=CustomerMatchSeatStateType.choices)
 
     class Meta:
         model = SeatEntity

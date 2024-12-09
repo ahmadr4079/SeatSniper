@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import include, path
 
+from seas.app.views.payment_view import PaymentView
 from seas.project.config import RunEnvType, seas_config
 
 urlpatterns = [
     path('api/v1/', include('seas.app.services.dispatch.dispatcher'), name="api"),
+    path('payment/', PaymentView.as_view(), name="payment"),
 ]
 
 if seas_config.run_env_type == RunEnvType.development:

@@ -12,10 +12,10 @@ class CustomerMatchSeatEntity(EditableEntity, DeletableEntity):
     seat = models.ForeignKey(SeatEntity, on_delete=models.DO_NOTHING)
     customer = models.ForeignKey(CustomerEntity, on_delete=models.DO_NOTHING)
     state = models.CharField(
-        max_length=9,
+        max_length=8,
         choices=CustomerMatchSeatStateType.choices,
         db_index=True,
-        default=CustomerMatchSeatStateType.AVAILABLE,
+        default=CustomerMatchSeatStateType.RESERVED,
     )
 
     class Meta:

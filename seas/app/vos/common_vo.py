@@ -12,3 +12,5 @@ class CommonVo:
     match_id = "match_id"
     seats = "seats"
     seat_ids = "seat_ids"
+    payment_code = "payment_code"
+    is_success = "is_success"

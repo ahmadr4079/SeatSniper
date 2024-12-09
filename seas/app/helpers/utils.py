@@ -39,3 +39,8 @@ class Utils:
     def generate_tracking_code() -> str:
         now_time_stamp = str(int(datetime.datetime.timestamp(datetime.datetime.now())))
         return now_time_stamp + get_random_string(2, allowed_chars="0123456789")
+
+    @staticmethod
+    def generate_payment_code() -> str:
+        now_time_stamp = str(int(datetime.datetime.timestamp(datetime.datetime.now())))
+        return now_time_stamp + get_random_string(5, allowed_chars="0123456789")
